@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+
+}
+
+[data-end]{
+    display: none;
+}
+
+:root{
+    --secondary:#220062;
+    --presecondary:#2e0083;
+    --primary:#611b9b;
+    --navheight:10.5vh;
+}
+
+body{
+    background-color: var(--secondary);
+    overflow-x: hidden;
+}
+
+#elevation{
+    position:absolute;
+    top:2vh;
+    right:2vh;
+    z-index:401;
+}
+
+#Geolocation{
+    height: 50vh;
+}
+
+#bufvideo{
+    display:none;
+}
+
+#background{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    background-color:var(--secondary);
+}
+
+#video-container{
+    position: relative;
+    display: none;
+    background-color: #00000085;
+    backdrop-filter: blur(5px);
+}
+
+#video{
+    height: 50vh;
+    width: 100%;
+    display: flex;
+}
+canvas{
+    padding: 0;
+    margin: 0;
+}
+
+#motion_obj{
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--navheight));
+    overflow: hidden;
+    z-index: -10;
+}
+#Geolocation{
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--navheight));
+    overflow: hidden;
+    z-index: -10;
+}
+
+#Geolocation *{
+    color: black;
+}
+
+[data-fullscreen],[data-vr]{
+    height: fit-content;
+}
+
+#video-container > [data-vr], #video-container:fullscreen > [data-fullscreen]{
+    position: absolute;
+    top: 2vh;
+    right: 2vh;
+}
+
+#video-container > [data-fullscreen]{
+    position: absolute;
+    top: 2vh;
+    right: 12vh;
+}
+
+.full{
+    width: 50% !important;
+    height: 100% !important;
+    display: flex !important;
+}
+.entire{
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+}
+
+.button{
+    max-width: max-content;
+    border: none;
+    outline: none;
+    background:linear-gradient(45deg,var(--primary), #7e2eff);
+    padding: 2vh;
+    border-radius: 100vmax;
+    font-size: 2.5vh;
+    cursor: pointer;
+    box-shadow: 0 0 1vh var(--secondary), 0 0 2vh var(--secondary),
+                inset 1vh 1vh 0.5vh #7e2eff55
+    ;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button:hover{
+    transform: scale(1.1) rotate(-3deg);
+}
+#connecter{
+    display: flex;
+    padding: 2vh;
+    background-color: var(--presecondary);
+    justify-content: space-between;
+    align-items: center;
+    margin: 2vh;
+    border-radius: 100vmax;
+    gap: 2vh;
+}
+
+#connecter > *{
+    flex: 1 1 100%;
+}
+#announce-panel{
+    display: none;
+    padding: 2vh;
+    background-color: var(--presecondary);
+    justify-content: space-between;
+    align-items: center;
+    margin: 2vh;
+    border-radius: 100vmax;
+    gap: 2vh;
+}
+
+#announce-panel > *{
+    flex: 1 1 100%;
+}
+
+.input{
+    border: none;
+    outline: none;
+    background:linear-gradient(45deg,var(--primary), #7e2eff);
+    padding: 2vh;
+    border-radius: 100vmax;
+    font-size: 2.5vh;
+    box-shadow: 0 0 1vh var(--secondary), 0 0 2vh var(--secondary),
+                inset 1vh 1vh 0.5vh #4b00c455
+    ;
+    transition: 0.2s;
+    flex:1 1 100%;
+}
+.label{
+    border: none;
+    outline: none;
+    background:linear-gradient(45deg,var(--primary), #7e2eff);
+    padding: 2vh;
+    border-radius: 100vmax;
+    font-size: 2.5vh;
+    box-shadow: 0 0 1vh var(--secondary), 0 0 2vh var(--secondary),
+                inset 1vh 1vh 0.5vh #4b00c455
+    ;
+    transition: 0.2s;
+    flex:1 1 100%;
+    cursor:text;
+    user-select: all;
+}
+
+.input::placeholder{
+    color: white;
+}
+
+.break_width{
+    max-width: initial;
+}
+
+.break_width:hover{
+    transform: scale(1.1);
+}
+
+nav{
+    background-color: var(--presecondary);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--navheight);
+    display: flex;
+    padding: 2vh;
+    gap: 2vh;
+}

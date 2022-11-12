@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+
+}
+
+[data-end]{
+    display: none;
+}
+
+:root{
+    --secondary:#220062;
+    --presecondary:#2e0083;
+    --primary:#611b9b;
+}
+
+body{
+    background-color: var(--secondary);
+    overflow-x: hidden;
+}
+
+
+header{
+    display: flex;
+    padding: 2vh;
+    background-color: var(--presecondary);
+    justify-content: space-between;
+    align-items: center;
+    margin: 2vh;
+    border-radius: 100vmax;
+    gap: 2vh;
+}
+
+header > *{
+    flex: 1 1 100%;
+}
+
+[data-link]{
+    user-select: all;
+    margin-left: 2vh;
+    overflow: hidden;
+    font-size: 4.5vmin;
+    width: fit-content;
+}
+
+[data-fullscreen]{
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#video{
+    height: 50vh;
+    width: 100%;
+    display: flex;
+}
+
+#video_container > [data-fullscreen]{
+    position: absolute;
+    top: 2vh;
+    right: 2vh;
+}
+
+
+.full{
+    width: 50%;
+    height: 100%;
+    display: flex;
+}
+
+#video_container{
+    display: none;
+    position: relative;
+    width: 100%;
+    background-color: #00000085;
+    backdrop-filter: blur(5px);
+}
+#video_container:fullscreen > video{
+    height: 100%;
+    width: 100%;
+}
+
+.button{
+    max-width: max-content;
+    border: none;
+    outline: none;
+    background:linear-gradient(45deg,var(--primary), #7e2eff);
+    padding: 2vh;
+    border-radius: 100vmax;
+    font-size: 2.5vh;
+    cursor: pointer;
+    box-shadow: 0 0 1vh var(--secondary), 0 0 2vh var(--secondary),
+                inset 1vh 1vh 0.5vh #7e2eff55
+    ;
+    transition: 0.2s;
+}
+.select{
+    border: none;
+    outline: none;
+    background:linear-gradient(45deg,var(--primary), #7e2eff);
+    padding: 2vh;
+    border-radius: 100vmax;
+    font-size: 2.5vh;
+    cursor: pointer;
+    box-shadow: 0 0 1vh var(--secondary), 0 0 2vh var(--secondary),
+                inset 1vh 1vh 0.5vh #7e2eff55
+    ;
+    transition: 0.2s;
+    flex:1 1 100%;
+}
+.select > * {
+    background:var(--primary);
+}
+
+.button:hover{
+    transform: scale(1.1) rotate(-3deg);
+}
+
+[data-camera-option]{
+    display: flex;
+    justify-content: space-between;
+    gap: 2vh;
+    align-items: center;
+    flex-basis: 100%;
+}
+
+.break_width{
+    max-width: initial;
+}
+
+.break_width:hover{
+    transform: scale(1.1);
+}
+
+#controls{
+    display: flex;
+    flex-wrap: wrap; 
+    gap:2vh;
+    padding: 2vh 2vh 0vh 2vh;
+}
+
+#controls > *:not([data-camera-option]){
+    flex: 1 1 100%;
+}

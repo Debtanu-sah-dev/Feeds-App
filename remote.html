@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/remote.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+<body>
+    <div id="background"></div>
+    <div id="connecter">
+        <input type="text" data-link class="input" placeholder="Remote Link">
+        <button class="button" data-connecter>Connect</button>
+    </div>
+    <div id="video-container">
+        <video id="video" autoplay playsinline ></video>
+        <video muted autoplay playsinline id="bufvideo"></video>
+        <button data-fullscreen class="button break_width"><span class="material-symbols-outlined">
+            fullscreen
+            </span></button>
+        <button data-vr class="button break_width"><span class="material-symbols-outlined">
+            vrpano
+            </span></button>
+    </div>
+    <div id="announce-panel" >
+        <input type="text" data-aninp class="input" placeholder="Annoucement Text">
+        <button data-anbtn class="button">Announce</button>
+    </div>
+    <div id="motion_obj">
+        
+    </div>
+    <div id="Geolocation">
+        
+        <p id="elevation" class="label" style="color:white;">Elevation: Not Found</p>
+    </div>
+    <nav>
+        <button class="button break_width" data-motion-toogle><span class="material-symbols-outlined">
+            view_in_ar
+            </span></button>
+        <button class="button break_width" data-location-toogle><span class="material-symbols-outlined">
+            map
+            </span></button>
+    </nav>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js" integrity="sha512-rCZdHNB0AePry6kAnKAVFMRfWPmUXSo+/vlGtrOUvhsxD0Punm/xWbEh+8vppPIOzKB9xnk42yCRZ5MD/jvvjQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/quaternion.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
+    <script src="js/FIREBASE_CONFIG.JS"></script>
+    <script src="js/remote.js"></script>
+    <script>
+    const rad = Math.PI / 180;
+    function setup() {
+        let canvas = createCanvas(motion_info.offsetWidth, motion_info.offsetHeight, WEBGL);
+        canvas.parent("#motion_obj")
+    }
+
+    window.addEventListener("resize", () => {
+        resizeCanvas(motion_info.offsetWidth, motion_info.offsetHeight);
+    })
+
+
+    function draw() {
+        background(100);
+
+        //drag to move the world.
+        orbitControl();
+        angleMode(DEGREES); 
+
+        ambientLight(150);
+        noStroke();
+        directionalLight(255, 255, 255, 0.25, 0.25, 0);
+        pointLight(255, 255, 255, 0, 0, 250);
+        push();
+        if(motion_obj != null){
+            // rotateZ(motion_obj.ao);
+            // rotateX(motion_obj.bo);
+            // rotateY(motion_obj.go);
+
+            let q = Quaternion.fromEuler(motion_obj.ao * rad,motion_obj.bo * rad,motion_obj.go * rad,"YXZ" )
+
+            applyMatrix(q.conjugate().toMatrix4())
+        }
+        fill(225)
+        // specularMaterial(250);
+        box(75, 25, 200)
+        pop();
+    }
+    </script>
+</body>
+</html>
